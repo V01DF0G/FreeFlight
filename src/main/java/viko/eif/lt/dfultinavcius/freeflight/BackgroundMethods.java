@@ -24,34 +24,22 @@ public class BackgroundMethods
             "HTTP_VIA",
             "REMOTE_ADDR" };
 
-    public static String getClientIpAddress(HttpServletRequest request) {
+    public static String getClientIpAddress(HttpServletRequest request) throws IOException {
         String ip = request.getRemoteAddr();
         for (String header : IP_HEADER_CANDIDATES) {
-            if (ip.equalsIgnoreCase("0:0:0:0:0:0:0:1"))
-            {
-                URL whatismyip = null;
-                try {
-                    whatismyip = new URL("http://checkip.amazonaws.com");
-                } catch (MalformedURLException e) {
-                    e.printStackTrace();
-                }
-                BufferedReader in = null;
-                try {
-                    in = new BufferedReader(new InputStreamReader(
-                            whatismyip.openStream()));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
 
-                try {
-                    return in.readLine();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+            if(ip.equals("0:0:0:0:0:0:0:1") || ip == null)
+            {
+                URL whatismyip = new URL("http://bot.whatismyipaddress.com/");
+                BufferedReader in = new BufferedReader(new InputStreamReader(whatismyip.openStream()));
+                return in.readLine();
             }
-            if (ip != null && ip.length() != 0 && !"unknown".equalsIgnoreCase(ip)) {
+            ip = request.getHeader(header);
+            if (ip != null && ip.length() != 0 && !"unknown".equalsIgnoreCase(ip))
+            {
                 return ip;
             }
+
         }
         return request.getRemoteAddr();
     }
