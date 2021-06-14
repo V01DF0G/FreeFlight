@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import viko.eif.lt.dfultinavcius.freeflight.BackgroundMethods;
-import viko.eif.lt.dfultinavcius.freeflight.ExternalAPI.ExternalAPI;
 
 import javax.servlet.http.HttpServletRequest;
 import java.awt.*;
