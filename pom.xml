@@ -11,7 +11,7 @@
     <groupId>viko.eif.lt.dfultinavcius</groupId>
     <artifactId>freeflight</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <name>Freelight</name>
     <description>FreeFlight closest airport finder.</description>
     <properties>
