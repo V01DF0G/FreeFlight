@@ -22,6 +22,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @RestController
 @RequestMapping(path = "api/v1/FreeFlight")
@@ -63,12 +64,10 @@ public class AirportInfoController
                 .header("x-rapidapi-host", "geo-services-by-mvpc-com.p.rapidapi.com")
                 .method("GET", HttpRequest.BodyPublishers.noBody())
                 .build();
+
+        TimeUnit.SECONDS.sleep(2);
         HttpResponse<String> GeoServiceresp = HttpClient.newHttpClient().send(GeoServicereq, HttpResponse.BodyHandlers.ofString());
-        try {
-            Thread.sleep(1 * 1000);
-        } catch (InterruptedException ie) {
-            Thread.currentThread().interrupt();
-        }
+
 
         JsonNode geoServiceNode = mapper.readTree(GeoServiceresp.body());
         AirportInfo airportInfo = new AirportInfo();
