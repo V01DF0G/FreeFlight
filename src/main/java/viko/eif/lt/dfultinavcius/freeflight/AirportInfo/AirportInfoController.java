@@ -65,10 +65,11 @@ public class AirportInfoController
                 .method("GET", HttpRequest.BodyPublishers.noBody())
                 .build();
 
-        TimeUnit.SECONDS.sleep(2);
         HttpResponse<String> GeoServiceresp = HttpClient.newHttpClient().send(GeoServicereq, HttpResponse.BodyHandlers.ofString());
+        while(GeoServiceresp.statusCode() != 200)
+        {
 
-
+        }
         JsonNode geoServiceNode = mapper.readTree(GeoServiceresp.body());
         AirportInfo airportInfo = new AirportInfo();
 
