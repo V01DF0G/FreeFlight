@@ -1,7 +1,20 @@
 package viko.eif.lt.dfultinavcius.freeflight.AirportInfo;
 
+
+import javax.persistence.*;
+
+@Entity
+@Table
 public class AirportInfo
 {
+    @Id
+    @SequenceGenerator(
+            name = "airport_sequence",
+            sequenceName = "airport_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue( strategy = GenerationType.SEQUENCE)
+
     private Long id;
     private String country;
     private String city;
