@@ -1,11 +1,10 @@
 Feature: FreeFlightApplication test
 
   Scenario: A user connects to api
-    Given the server is up
-    #When user tries to connect to the api
-   # Then the server should give an user success status
+    When the server is up
+    Then the server should give an user success status
 
-#Feature: AirportInfo Controller test
+Feature: AirportInfo Controller test
 
   #Scenario: AirportInfo finds closest airport of the user
     #When user tries to connect to the FreeFlight/Nearest
